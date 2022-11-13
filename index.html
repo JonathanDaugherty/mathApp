@@ -16,7 +16,7 @@
 </head>
 <style>
     body {
-        background-color: black;
+        background-color: grey;
         color: aquamarine;
     }
 
@@ -29,13 +29,21 @@
     }
 
     input {
-        background-color: black;
+        background-color: gray;
         color: aquamarine;
+        width: 100px;
     }
 
     select {
-        background-color: black;
+        background-color: gray;
         color: aquamarine;
+        width: 100px;
+    }
+
+    button {
+        background-color: gray;
+        color: aquamarine;
+        border-color: aquamarine;
     }
 </style>
 
@@ -50,23 +58,30 @@
     <div class="container">
         <div>
             <label>Number 1:</label>
-            <input id="firstNumber">
+            <div>
+                <input id="firstNumber">
+            </div>
             <label>Operator:</label>
-            <select id="operator">
-                <option>+</option>
-                <option>-</option>
-                <option>*</option>
-                <option>/</option>
-            </select>
+            <div>
+                <select id="operator">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+            </div>
             <label>Number 2:</label>
-            <input id="secondNumber">
+            <div>
+                <input id="secondNumber">
+            </div>
         </div>
         <div class="container">
-            <label>Submit</label>
+            <label>Submit:</label>
             <button id="button" onclick="MATH()">Click Me!</button>
         </div>
-        <div>
-
+        <div id="container">
+            <label>Answer</label>
+            <p id="answer"></p>
         </div>
     </div>
 
@@ -79,17 +94,24 @@
         let a = $("#firstNumber").val();
         let b = $("#secondNumber").val();
 
+
         let operator = $("#operator").val()
         if (operator == "+") {
-            console.log(parseInt(a) + parseInt(b));
+            $("#answer").html(parseInt(a) + parseInt(b));
         } else if (operator == "-") {
-            console.log(parseInt(a) - parseInt(b));
+            $("#answer").html(parseInt(a) - parseInt(b));
         } else if (operator == "*") {
-            console.log(parseInt(a) * parseInt(b));
+            $("#answer").html(parseInt(a) * parseInt(b));
         } else {
-            console.log(parseInt(a) / parseInt(b));
+            $("#answer").html(parseInt(a) / parseInt(b));
         }
+    }
 
+    function checkifNumValid() {
+        let c = $("#firstNumber").val();
+        let d = $("#secondNumber").val();
+        if (c || d == "")
+            alert("There must be a value passed in both Number 1 and Number 2!");
     }
 
 </script>
